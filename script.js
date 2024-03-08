@@ -47,14 +47,13 @@ function updateTotal() {
 
 // Function to place the order
 function placeOrder() {
-    // Implement order placement logic (e.g., send to server, show confirmation, etc.)
     if (order.length > 0) {
-        alert("Order placed!");
-        // Reset order
-        order = [];
-        total = 0;
-        updateOrderList();
-        updateTotal();
+        // Store order details in localStorage
+        const orderDetails = { order, total };
+        localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+
+        // Redirect to checkout.html
+        window.location.href = "checkout.html";
     } else {
         alert("Your order is empty. Please add items before placing an order.");
     }
